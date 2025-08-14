@@ -40,8 +40,7 @@ const { roomConnectStatus, participants, layout } = useConferenceState();
 const fakeParticipant = {
   id: "fake",
   name: "...",
-  test: false,
-  host: false
+  test: false
 } as HxParticipant
 
 const conferenceCanvas = ref(null);

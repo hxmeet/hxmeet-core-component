@@ -43,14 +43,14 @@ export const useClickSidebarButton = (name: SidebarKey) => {
 // ------------------------
 export const useAddParticipantToast = (hxParticipant: HxParticipant) => {
   const toast = useToast();
-  const typeOfParticipant = hxParticipant.host ? "Host" : hxParticipant.test ? "Testparticipant" : "Participant";
-  toast.add({ description: hxParticipant.name, title: typeOfParticipant + " joined", icon: "i-heroicons-user-plus" });
+  const typeOfParticipant = hxParticipant.test ? "Testparticipant" : "Participant";
+  toast.add({ description: hxParticipant.name, title: typeOfParticipant + "Participant joined", icon: "i-heroicons-user-plus" });
   playSound("join")
 };
 
 export const useRemoveParticipantToast = (hxParticipant: HxParticipant) => {
   const toast = useToast();
-  const typeOfParticipant = hxParticipant.host ? "Host" : hxParticipant.test ? "Testparticipant" : "Participant";
+  const typeOfParticipant = hxParticipant.test ? "Testparticipant" : "Participant";
   toast.add({ description: hxParticipant.name, title: typeOfParticipant + " left", icon: "i-heroicons-user-minus" });
   playSound("notification")
 };
