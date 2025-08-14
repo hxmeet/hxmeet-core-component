@@ -1,0 +1,7 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+:root {
+  --top-bar-height: 56px;
+  --bottom-bar-height: 80px;
+}
