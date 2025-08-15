@@ -1,5 +1,5 @@
 import type {HxParticipant, LayoutKey, RoomConnectStatusKey} from "../types/conference";
-import {useDebounceFn, useThrottleFn} from '@vueuse/core'
+import {useThrottleFn} from '@vueuse/core'
 import {convertLinksToAnchorTags, escapeHtml} from "../helper/helper";
 import {defaultLayoutOption, layoutOptions} from "../types/conference";
 import {log} from "../helper/logger";
@@ -63,21 +63,14 @@ export const useThrottledSendReaction = useThrottleFn(async (emoji: string) => {
   if (localParticipant) useAddReaction(emoji, localParticipant);
 }, 250);
 
-// const debouncedChangeRoomData = useDebounceFn(async (roomName: string, data: any) => {
-    // await $fetch("/api/ChangeRoomData", {
-    //     method: "POST",
-    //     body: { roomName, data },
-    // });
-// }, 1000);
-
 export const useAddTestParticipant = async () => {
-  const { participants, testParticipants, setTestParticipants } = useConferenceState();
+  const { participants, testParticipants } = useConferenceState();
   if (participants.value.length >= 15) return;
   await useSetTestParticipant(testParticipants.value.length + 1);
 };
 
 export const useRemoveTestParticipant = async () => {
-  const { testParticipants, participants, findParticipant } = useConferenceState();
+  const { testParticipants} = useConferenceState();
   if (testParticipants.value.length === 0) return;
   await useSetTestParticipant(testParticipants.value.length - 1);
 };
@@ -86,7 +79,6 @@ export const useSetTestParticipant = async (count: number) => {
   const { setTestParticipants } = useConferenceState();
   await useSendTestParticipants(count);
   setTestParticipants(count);
-  // return await debouncedChangeRoomData(roomName.value, { testParticipants: count });
 };
 
 export const useChangeName = async (name: string) => {

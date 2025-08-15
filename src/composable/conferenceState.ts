@@ -40,32 +40,6 @@ export const useConferenceState = () => {
       });
     }
   }
-  // const setVideoTrack = (id: string, track: Track) => {
-  //   const participant = findParticipant(id);
-  //   if (participant) {
-  //     $bus.emit("setVideoTrack", {id, track})
-  //     $global.videoTracks[id] = track;
-  //     participant.cameraMuted = track.isMuted;
-  //   }
-  // }
-  // const setAudioTrack = (id: string, track: Track) => {
-  //   const participant = findParticipant(id);
-  //   if (participant) {
-  //     $bus.emit("setAudioTrack", {id, track})
-  //     $global.audioTracks[id] = track;
-  //     participant.microphoneMuted = track.isMuted;
-  //   }
-  // }
-  // const setScreenshareVideoTrack = (track: Track | undefined) => {
-  //   log.info("setScreenshareVideoTrack", track)
-  //   $global.screenshareVideoTrack = track;
-  //   $bus.emit("setScreenshareVideoTrack", {track})
-  // }
-  // const setScreenshareAudioTrack = (track: Track | undefined) => {
-  //   log.info("setScreenshareAudioTrack", track)
-  //   $global.screenshareAudioTrack = track;
-  //   $bus.emit("setScreenshareAudioTrack", {track})
-  // }
   const setNoCamera = (enabled = false) => {
     const participant = useLocalHxParticipant()
     if (participant) {
@@ -81,14 +55,11 @@ export const useConferenceState = () => {
     microphone.value = enabled;
   }
   const findParticipant = (id: string) => participants.value.find((p) => p.id === id);
-  // const isHost = useState<boolean>("isHost", () => false);
   const localParticipantId = computed(() => useLocalHxParticipant()?.id);
 
   // ---------------------------------------------------------------------
   // Messages
   // ---------------------------------------------------------------------
-  // const messages = useState<ChatMessageUIItem[]>("messages", () => []);
-  // const newMessageCount = useState<number>("newMessageCount", () => 0);
   const increaseNewMessageCount = () => (newMessageCount.value += 1);
   const resetNewMessageCount = () => (newMessageCount.value = 0);
 
