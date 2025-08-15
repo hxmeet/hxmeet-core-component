@@ -1,6 +1,6 @@
 {
   "name": "hxmeet-core-component",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "description": "HxMeet (video conferencing) core component",
   "engines": {
@@ -31,8 +31,7 @@
     "@vueuse/core": "^13.6.0",
     "livekit-client": "^2.15.4"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@tsconfig/node22": "^22.0.2",
     "@types/node": "^22.16.5",
@@ -44,8 +43,16 @@
     "vite-plugin-vue-devtools": "^8.0.0",
     "vue-tsc": "^3.0.4"
   },
-  "bugs": { "url": "https://github.com/hxmeet/hxmeet-core-component/issues" },
+  "bugs": {
+    "url": "https://github.com/hxmeet/hxmeet-core-component/issues"
+  },
   "homepage": "https://github.com/hxmeet/hxmeet-core-component",
   "license": "MIT",
-  "keywords": ["vue", "webrtc", "video-conferencing", "livekit", "screensharing"]
+  "keywords": [
+    "vue",
+    "webrtc",
+    "video-conferencing",
+    "livekit",
+    "screensharing"
+  ]
 }
