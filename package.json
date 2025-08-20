@@ -1,6 +1,6 @@
 {
   "name": "hxmeet-core-component",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "description": "HxMeet (video conferencing) core component",
   "engines": {
@@ -31,8 +31,7 @@
     "vue": "^3.5.18",
     "vue-router": "^4.5.1"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@tsconfig/node22": "^22.0.2",
     "@types/node": "^22.16.5",
