@@ -28,6 +28,10 @@
 <script setup lang="ts">
 import {ref, onMounted} from "vue";
 import type { DropdownMenuItem } from '@nuxt/ui'
+import UDropdownMenu from "@nuxt/ui/components/DropdownMenu.vue";
+import UTooltip from "@nuxt/ui/components/Tooltip.vue";
+import UButton from "@nuxt/ui/components/Button.vue";
+
 import {useUIState} from "../../composable/conferenceState.ts";
 import HxPanel from "./HxPanel.vue";
 

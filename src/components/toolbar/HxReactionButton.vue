@@ -22,6 +22,8 @@
 <script setup lang="ts">
 import {ref} from "vue";
 import HxRoundButton from "./HxRoundButton.vue";
+import UButton from "@nuxt/ui/components/Button.vue";
+import UPopover from "@nuxt/ui/components/Popover.vue";
 import {useThrottledSendReaction} from "../../composable/conferenceActions.ts";
 
 const reactionsOpen = ref(false);

@@ -14,7 +14,7 @@
          class="flex justify-center items-center absolute top-0 w-full h-full object-cover bg-white rounded-full hover:shadow-[0_0px_20px_0px_rgba(144,137,252,1)] shadow-[0_0px_10px_0px_rgba(144,137,252,0.5)]"
          :style="layoutStyles.videoElement"
     >
-      <UIcon name="i-fluent-camera-off-24-regular" class="text-gray-300 w-12 h-12" />
+      <HxCameraOffIcon class="text-gray-300 w-12 h-12"/>
     </div>
     <TransitionGroup name="fly" @after-enter="endReaction" @enter-cancelled="endReaction">
       <template v-for="reaction in participant.reactions" :key="reaction.id">
@@ -32,10 +32,7 @@
         <span>
           {{ participant.name }}
         </span>
-        <UIcon v-if="participant.microphoneMuted"
-               name="i-fluent-mic-off-20-regular"
-               class="h-5 w-5 inline-block"
-        />
+        <HxMicMutedIcon v-if="participant.microphoneMuted" class="h-5 w-5 inline-block" />
       </span>
     </div>
   </div>
@@ -46,6 +43,8 @@ import {ref, computed, onMounted, watch, nextTick} from "vue";
 import type { HxParticipant, LayoutStyleItem } from "../../types/conference";
 import type { Track } from "livekit-client";
 import { log } from "../../helper/logger";
+import HxMicMutedIcon from "../icons/HxMicMutedIcon.vue"
+import HxCameraOffIcon from "../icons/HxCameraOffIcon.vue"
 import {useConferenceState} from "../../composable/conferenceState.ts";
 import {useTrackStore} from "../../composable/livekit.ts";
 

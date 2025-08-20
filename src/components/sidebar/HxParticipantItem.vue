@@ -28,6 +28,7 @@
 <script setup lang="ts">
 import {ref, watch} from "vue";
 import type { HxParticipant } from "../../types/conference";
+import UAvatar from "@nuxt/ui/components/Avatar.vue";
 import {useConferenceState} from "../../composable/conferenceState.ts";
 
 const props = defineProps<{

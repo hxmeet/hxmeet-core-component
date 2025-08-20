@@ -25,6 +25,10 @@
 
 <script setup lang="ts">
 import {ref, onMounted} from "vue";
+import UCard from "@nuxt/ui/components/Card.vue";
+import UBadge from "@nuxt/ui/components/Badge.vue";
+import UButton from "@nuxt/ui/components/Button.vue";
+
 import {useUIState} from "../../composable/conferenceState.ts";
 
 defineProps({

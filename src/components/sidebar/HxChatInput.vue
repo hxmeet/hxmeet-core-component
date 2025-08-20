@@ -25,6 +25,7 @@
 
 <script setup lang="ts">
 import {ref, onMounted} from "vue";
+import UButton from "@nuxt/ui/components/Button.vue";
 
 const emit = defineEmits(['sendMessage', 'escape'])
 defineProps<{

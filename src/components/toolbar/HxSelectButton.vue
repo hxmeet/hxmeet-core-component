@@ -17,6 +17,9 @@
 import {computed} from "vue";
 import {type SidebarKey, useUIState} from "../../composable/conferenceState.ts";
 import {useClickSidebarButton} from "../../composable/ui.ts";
+import UButton from "@nuxt/ui/components/Button.vue";
+import UChip from "@nuxt/ui/components/Chip.vue";
+import UTooltip from "@nuxt/ui/components/Tooltip.vue";
 
 const props = defineProps<{
   id: SidebarKey,

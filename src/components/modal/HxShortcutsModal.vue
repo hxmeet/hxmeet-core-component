@@ -1,5 +1,5 @@
 <template>
-  <UModal title="Keyboard shortcuts">
+  <UModal v-model:open="shortcutsModal" title="Keyboard shortcuts">
     <template #body>
       <table class="border-collapse table-fixed text-sm">
         <tbody class="">
@@ -17,14 +17,19 @@
     </template>
     <template #footer>
       <div class="w-full flex justify-end items-center gap-x-4">
-        <UButton @click="emit('close')">Close</UButton>
+        <UButton @click="shortcutsModal = false">Close</UButton>
       </div>
     </template>
   </UModal>
 </template>
 
 <script setup lang="ts">
-const emit = defineEmits(['close'])
+import UButton from "@nuxt/ui/components/Button.vue";
+import UModal from "@nuxt/ui/components/Modal.vue";
+import UKbd from "@nuxt/ui/components/Kbd.vue";
+import {useModal} from "../../composable/ui.ts";
+
+const { shortcutsModal } = useModal();
 
 const data = [
   { name: 'Microphone: switch off', host: false, shortcut: ['M'], border: false },

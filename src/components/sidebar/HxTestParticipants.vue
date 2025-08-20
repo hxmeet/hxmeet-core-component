@@ -17,6 +17,10 @@
 
 <script setup lang="ts">
 import {computed} from "vue";
+import UIcon from "@nuxt/ui/components/Icon.vue";
+import UTooltip from "@nuxt/ui/components/Tooltip.vue";
+import UButton from "@nuxt/ui/components/Button.vue";
+
 import {useConferenceState} from "../../composable/conferenceState.ts";
 import {useAddTestParticipant, useRemoveTestParticipant} from "../../composable/conferenceActions.ts";
 

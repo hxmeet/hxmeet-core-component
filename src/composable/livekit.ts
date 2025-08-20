@@ -197,6 +197,7 @@ export const switchMicrophoneLivekit = async (enabled: boolean): Promise<boolean
   const {setNoMicrophone} = useConferenceState();
   if (room?.localParticipant) {
     try {
+      log.info("setMicrophoneEnabled", enabled);
       await room.localParticipant.setMicrophoneEnabled(enabled);
       setNoMicrophone(enabled);
     } catch (error) {
@@ -337,6 +338,7 @@ const participantNameListener = async (name: string | undefined, participant: Lo
 };
 
 const trackMutedListener = async (publication: TrackPublication, participant: Participant) => {
+  log.info("track muted", publication, participant);
   const {participants} = useConferenceState();
   const hxParticipant = participants.value.find((hxParticipant) => hxParticipant.id === participant.identity);
   if (hxParticipant !== undefined) {

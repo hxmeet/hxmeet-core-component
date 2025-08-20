@@ -24,6 +24,7 @@
 
 <script setup lang="ts">
 import type {HxParticipant} from "../../types/conference";
+import UAvatar from "@nuxt/ui/components/Avatar.vue";
 
 defineProps<{
   sender: HxParticipant

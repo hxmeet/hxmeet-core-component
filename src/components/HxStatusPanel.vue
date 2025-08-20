@@ -10,6 +10,7 @@
 </template>
 
 <script setup lang="ts">
+import UIcon from "@nuxt/ui/components/Icon.vue";
 
 defineProps({
   icon: String,

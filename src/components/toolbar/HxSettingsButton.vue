@@ -7,15 +7,18 @@
 <script setup lang="ts">
 import type {DropdownMenuItem} from "@nuxt/ui";
 import HxRoundButton from "./HxRoundButton.vue";
-import {useOpenShortcutsModal} from "../../composable/ui.ts";
+import UDropdownMenu from "@nuxt/ui/components/DropdownMenu.vue";
 import {useColorMode, useThrottleFn} from "@vueuse/core";
 import {useAddTestParticipant, useRemoveTestParticipant, useToggleLayout} from "../../composable/conferenceActions.ts";
+import {useModal} from "../../composable/ui.ts";
+
+const { shortcutsModal } = useModal();
 
 const keyboardItem:DropdownMenuItem = {
   label: "Keyboard shortcuts",
   icon: "i-fluent-keyboard-24-regular",
   "class": "hidden lg:flex",
-  onSelect: useOpenShortcutsModal
+  onSelect: () => shortcutsModal.value = true
 }
 
 const addTestParticipantItem:DropdownMenuItem = {

@@ -21,7 +21,7 @@
           tooltip="Leave conference"
           label="Leave"
           icon="i-heroicons-phone-x-mark"
-          @click="useOpenLeaveModal()"
+          @click="leaveModal = true"
       />
     </div>
     <HxSelectGroup class="hidden md:flex w-1/3 gap-x-0 lg:gap-x-2 items-center justify-end"/>
@@ -33,11 +33,13 @@ import HxRoundButton from "./HxRoundButton.vue";
 import HxSettingsButton from "./HxSettingsButton.vue";
 import HxModusButton from "./HxModusButton.vue";
 import HxReactionButton from "./HxReactionButton.vue";
-import {useOpenLeaveModal} from "../../composable/ui.ts";
 import HxSelectGroup from "../../components/toolbar/HxSelectGroup.vue";
+import {useModal} from "../../composable/ui.ts";
 import {useConferenceState} from "../../composable/conferenceState.ts";
 import {useToggleCamera, useToggleMicrophone} from "../../composable/conferenceActions.ts";
 import {useRoomName} from "../../composable/livekit.ts";
 
 const { microphone, camera } = useConferenceState();
+const { leaveModal } = useModal();
+
 </script>

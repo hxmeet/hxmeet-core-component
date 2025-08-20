@@ -15,6 +15,8 @@
 
 <script setup lang="ts">
 import {computed} from "vue";
+import UButton from "@nuxt/ui/components/Button.vue";
+import UTooltip from "@nuxt/ui/components/Tooltip.vue";
 import type {KbdProps} from "@nuxt/ui/components/Kbd.vue";
 
 export interface HxRoundButtonProps {

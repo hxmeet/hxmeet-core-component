@@ -30,6 +30,8 @@
       </div>
       <HxToolbar class="w-full h-[var(--bottom-bar-height)]"/>
     </template>
+    <HxLeaveModal/>
+    <HxShortcutsModal/>
   </div>
 </template>
 
@@ -38,6 +40,10 @@ import {onMounted, onUnmounted} from "vue";
 import HxToolbarTop from "./toolbar/HxToolbarTop.vue";
 import HxToolbar from "./toolbar/HxToolbar.vue";
 import HxSidebarPanel from "./HxSidebarPanel.vue";
+import HxLeaveModal from "./modal/HxLeaveModal.vue";
+import HxShortcutsModal from "./modal/HxShortcutsModal.vue";
+import HxStagePanel from "./stage/HxStagePanel.vue";
+import HxStatusPanel from "../components/HxStatusPanel.vue";
 import {onBeforeMount} from "vue";
 import {provideLivekitConfig} from "../composable/livekit.ts";
 import {useConferenceState, useUIState} from "../composable/conferenceState.ts";
@@ -47,13 +53,11 @@ import {
   useLeaveConference, useRemoveTestParticipant,
   useToggleCamera, useToggleLayout, useToggleMicrophone
 } from "../composable/conferenceActions.ts";
-import HxStatusPanel from "../components/HxStatusPanel.vue";
-import {useClickSidebarButton} from "../composable/ui.ts";
+import {useClickSidebarButton, useModal} from "../composable/ui.ts";
 import {useThrottleFn} from "@vueuse/core";
-import HxStagePanel from "./stage/HxStagePanel.vue";
-
+import {defineShortcuts2 as defineShortcuts} from "../composable/nuxtui/defineShortcuts2.ts";
 const { hideSidebar } = useUIState();
-const overlay = useOverlay()
+const {closeAllModals} = useModal()
 
 export interface HxMeetingProps {
   livekitUrl: string,
@@ -102,7 +106,7 @@ const throttledToggleLayout = useThrottleFn(() => {
 defineShortcuts({
   escape: () => {
     hideSidebar();
-    overlay.closeAll();
+    closeAllModals();
   },
   "1": () => useClickSidebarButton("info"),
   "2": () => useClickSidebarButton("participants"),

@@ -25,13 +25,15 @@
     "type-check": "vue-tsc --build"
   },
   "peerDependencies": {
-    "vue": "^3.5.18",
-    "vue-router": "^4.5.1",
     "@nuxt/ui": "^3.3.0",
     "@vueuse/core": "^13.6.0",
-    "livekit-client": "^2.15.4"
+    "livekit-client": "^2.15.4",
+    "vue": "^3.5.18",
+    "vue-router": "^4.5.1",
+    "@iconify-json/fluent": "^1.2.28"
   },
-  "dependencies": {},
+  "dependencies": {
+  },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.2",
     "@types/node": "^22.16.5",

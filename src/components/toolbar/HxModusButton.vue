@@ -12,6 +12,7 @@
 <script setup lang="ts">
 import {computed} from "vue";
 import type {DropdownMenuItem} from "@nuxt/ui/components/DropdownMenu.vue";
+import UDropdownMenu from "@nuxt/ui/components/DropdownMenu.vue";
 import HxRoundButton from "./HxRoundButton.vue";
 import {useConferenceState} from "../../composable/conferenceState.ts";
 import {useChangeLayout} from "../../composable/conferenceActions.ts";
