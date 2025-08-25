@@ -1,6 +1,14 @@
 <template>
     <HxPanel title="Info">
       <div class="text-sm" :class="{ 'select-none': sidebarResizing }">
+
+        <span v-if="bodyExtension && (isRef(bodyExtension) || typeof bodyExtension === 'string')">{{ bodyExtension }}</span>
+        <component
+            v-else-if="bodyExtension"
+            :is="(bodyExtension as ComponentDescriptor).component"
+            v-bind="(bodyExtension as ComponentDescriptor).props"
+        />
+
       </div>
       <template #footer>
         <div class="flex justify-between items-center">
@@ -26,18 +34,20 @@
 </template>
 
 <script setup lang="ts">
-import {ref, onMounted} from "vue";
+import {ref, onMounted, isRef} from "vue";
 import type { DropdownMenuItem } from '@nuxt/ui'
 import UDropdownMenu from "@nuxt/ui/components/DropdownMenu.vue";
 import UTooltip from "@nuxt/ui/components/Tooltip.vue";
 import UButton from "@nuxt/ui/components/Button.vue";
-
 import {useUIState} from "../../composable/conferenceState.ts";
 import HxPanel from "./HxPanel.vue";
-
+import {type ComponentDescriptor, useExtensions} from '../../composable/useExtensions.ts';
 const { sidebarResizing } = useUIState();
 
+const { get } = useExtensions();
 const helpItems = ref<DropdownMenuItem[][]>([]);
+
+const bodyExtension = get('sidebar.info.body')
 
 onMounted(async () => {
   helpItems.value.push([

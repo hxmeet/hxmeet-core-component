@@ -36,7 +36,7 @@
 </template>
 
 <script setup lang="ts">
-import {onMounted, onUnmounted} from "vue";
+import {onMounted, onUnmounted, watch, type Ref} from "vue";
 import HxToolbarTop from "./toolbar/HxToolbarTop.vue";
 import HxToolbar from "./toolbar/HxToolbar.vue";
 import HxSidebarPanel from "./HxSidebarPanel.vue";
@@ -56,15 +56,36 @@ import {
 import {useClickSidebarButton, useModal} from "../composable/ui.ts";
 import {useThrottleFn} from "@vueuse/core";
 import {defineShortcuts2 as defineShortcuts} from "../composable/nuxtui/defineShortcuts2.ts";
+import {type ComponentDescriptor, useExtensions} from "../composable/useExtensions.ts";
+
 const { hideSidebar } = useUIState();
 const {closeAllModals} = useModal()
 
 export interface HxMeetingProps {
   livekitUrl: string,
   livekitToken: string,
+  extensions?: Record<string, string | Ref | ComponentDescriptor>;
 }
 
 const props = defineProps<HxMeetingProps>()
+
+// ----------------------------------------------------------
+// Extensions
+// ----------------------------------------------------------
+
+const { set } = useExtensions();
+
+watch(() => props.extensions, (extensions) => {
+      console.log("extensions changed", extensions);
+      if (!extensions) return;
+      for (const [name, item] of Object.entries(extensions)) set(name, item);
+    },
+    { immediate: true, deep: true }
+);
+
+// ----------------------------------------------------------
+// ----------------------------------------------------------
+// ----------------------------------------------------------
 
 onBeforeMount(() => {
   provideLivekitConfig(
