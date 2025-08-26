@@ -56,7 +56,8 @@ import {
 import {useClickSidebarButton, useModal} from "../composable/ui.ts";
 import {useThrottleFn} from "@vueuse/core";
 import {defineShortcuts2 as defineShortcuts} from "../composable/nuxtui/defineShortcuts2.ts";
-import {type ComponentDescriptor, useExtensions} from "../composable/useExtensions.ts";
+import {type HxComponentDescriptor, useExtensions} from "../composable/useExtensions.ts";
+import {type HxHandler, type HxEvent, useEvents} from "../composable/useEvents.ts";
 
 const { hideSidebar } = useUIState();
 const {closeAllModals} = useModal()
@@ -64,28 +65,28 @@ const {closeAllModals} = useModal()
 export interface HxMeetingProps {
   livekitUrl: string,
   livekitToken: string,
-  extensions?: Record<string, string | Ref | ComponentDescriptor>;
+  extensions?: Record<string, string | Ref | HxComponentDescriptor>;
+  events?: Partial<Record<HxEvent, HxHandler>>;
 }
-
 const props = defineProps<HxMeetingProps>()
 
-// ----------------------------------------------------------
-// Extensions
-// ----------------------------------------------------------
-
+// ---------------------------------------
+// Register extensions
+// ---------------------------------------
 const { set } = useExtensions();
-
 watch(() => props.extensions, (extensions) => {
-      console.log("extensions changed", extensions);
-      if (!extensions) return;
-      for (const [name, item] of Object.entries(extensions)) set(name, item);
-    },
-    { immediate: true, deep: true }
-);
+  if (!extensions) return;
+  for (const [name, item] of Object.entries(extensions)) set(name, item);
+}, { immediate: true, deep: true });
 
-// ----------------------------------------------------------
-// ----------------------------------------------------------
-// ----------------------------------------------------------
+// ---------------------------------------
+// Register event listener
+// ---------------------------------------
+const { on } = useEvents();
+watch(() => props.events, (events) => {
+  if (!events) return;
+  for (const [name, item] of Object.entries(events)) on(name as HxEvent, item);
+}, { immediate: true, deep: true });
 
 onBeforeMount(() => {
   provideLivekitConfig(

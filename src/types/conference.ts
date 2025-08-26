@@ -20,7 +20,7 @@ export interface LayoutStyleItem {
   videoElement: any,
 }
 
-export type RoomConnectStatusKey = "" | "connecting" | "connected" | "failed" | "end" | "noDevices";
+export type HxMeetingStatus = "initialising" | "connecting" | "connected" | "failed" | "end" | "noDevices";
 export type LayoutKey = "circle" | "grid" | "cinema" | "screenshare";
 export const layoutOptions: LayoutKey[] = ['circle', 'grid', 'cinema'];
 export const defaultLayoutOption: LayoutKey = 'circle';

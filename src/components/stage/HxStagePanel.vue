@@ -10,7 +10,7 @@
         :layoutStyles="getVideoPositionStyle(idx)"
     />
     <HxVideo
-        v-if="roomConnectStatus === ''"
+        v-if="roomConnectStatus === 'initialising'"
         :idx="0"
         :participant="fakeParticipant"
         :key="0"
@@ -73,7 +73,7 @@ const getVideoPositionStyle = (index: number): LayoutStyleItem => {
   // This function calculates the position of each video in the conference canvas
   // Will be called everytime canvasDim or participants change, like a computed property
 
-  const total = roomConnectStatus.value === '' ? 1 : participants.value.length;
+  const total = roomConnectStatus.value === 'initialising' ? 1 : participants.value.length;
   if (layout.value === 'grid') {
     return calcGridLayout(index, total, canvasDim.value.width, canvasDim.value.height);
   } else if (layout.value === 'screenshare') {

@@ -1,16 +1,17 @@
-import {type Ref, ref, computed} from "vue"
+import {type Ref, ref, computed, watch} from "vue"
 
-import type {HxParticipant, ChatMessageUIItem, RoomConnectStatusKey, LayoutKey} from "../types/conference";
+import type {HxParticipant, ChatMessageUIItem, HxMeetingStatus, LayoutKey} from "../types/conference";
 import {exampleNames} from "../helper/example";
 import {defaultLayoutOption} from "../types/conference";
 import {log} from "../helper/logger";
 import {useTrackStore} from "./livekit.ts";
 import {useLocalHxParticipant} from "./conferenceActions.ts";
+import {useEvents} from "./useEvents.ts";
 
 // ---------------------------------------------------------------------
 // Conference data
 // ---------------------------------------------------------------------
-const roomConnectStatus: Ref<RoomConnectStatusKey> = ref("");
+const roomConnectStatus: Ref<HxMeetingStatus> = ref("initialising");
 const microphone: Ref<boolean> = ref(true);
 const camera: Ref<boolean> = ref(true);
 const loadingCamera: Ref<boolean> = ref(false);
@@ -18,6 +19,11 @@ const layout: Ref<LayoutKey> = ref(defaultLayoutOption);
 const participants: Ref<HxParticipant[]> = ref([]);
 const messages: Ref<ChatMessageUIItem[]> = ref([]);
 const newMessageCount: Ref<number> = ref(0);
+
+const { emit } = useEvents();
+watch(roomConnectStatus, async (status) => {
+  await emit("status", status);
+})
 
 export const useConferenceState = () => {
 
@@ -63,7 +69,7 @@ export const useConferenceState = () => {
   const increaseNewMessageCount = () => (newMessageCount.value += 1);
   const resetNewMessageCount = () => (newMessageCount.value = 0);
 
-  const resetState = (status: RoomConnectStatusKey = "") => {
+  const resetState = async (status: HxMeetingStatus = "initialising") => {
     const { resetTracks } = useTrackStore();
     log.info("resetState", status);
     resetTracks();

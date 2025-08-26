@@ -1,22 +1,25 @@
 import { shallowRef, type Ref, type Component, isRef } from 'vue';
+import {createLogger} from "../helper/logger";
 
-export type ComponentDescriptor = { component: Component; props?: Record<string, any> };
-type ExtensionValue = Ref<string> | ComponentDescriptor;
+const log = createLogger('HxMeet:Extensions')
+
+export type HxComponentDescriptor = { component: Component; props?: Record<string, any> };
+type ExtensionValue = Ref<string> | HxComponentDescriptor;
 type ExtensionMap = Map<string, ExtensionValue>;
 const extensions: ExtensionMap = new Map();
 
 export function useExtensions() {
 
-  const set = (name: string, item: string | Ref | ComponentDescriptor) => {
+  const set = (name: string, item: string | Ref | HxComponentDescriptor) => {
     if (typeof item === 'string') {
-      console.log("set (string)", name, item)
+      log.info("Set extension (type: string)", name, item)
       extensions.set(name, shallowRef<string>(item));
     } else if (isRef(item)) {
-      console.log("set (ref)", name, item)
+      log.info("Set extension (type: Ref)", name, item)
       extensions.set(name, item as Ref);
     } else {
-      console.log("set (comp-descriptor)", name, item)
-      extensions.set(name, item as ComponentDescriptor);
+      log.info("Set extension (type: ComponentDescriptor)", name, item)
+      extensions.set(name, item as HxComponentDescriptor);
     }
   }
 

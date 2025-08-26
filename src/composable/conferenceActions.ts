@@ -1,4 +1,4 @@
-import type {HxParticipant, LayoutKey, RoomConnectStatusKey} from "../types/conference";
+import type {HxParticipant, LayoutKey, HxMeetingStatus} from "../types/conference";
 import {useThrottleFn} from '@vueuse/core'
 import {convertLinksToAnchorTags, escapeHtml} from "../helper/helper";
 import {defaultLayoutOption, layoutOptions} from "../types/conference";
@@ -23,11 +23,11 @@ import {
 export const useEnterConference = async () => {
   log.info("Enter conference");
   const { roomConnectStatus } = useConferenceState();
-  roomConnectStatus.value = "";
+  roomConnectStatus.value = "initialising";
   await useConnectLivekit();
 };
 
-export const useLeaveConference = async (status: RoomConnectStatusKey = "") => {
+export const useLeaveConference = async ( status: HxMeetingStatus = "initialising") => {
   log.info("Leave conference");
   await useDisconnectLivekit();
   const { resetState } = useConferenceState();

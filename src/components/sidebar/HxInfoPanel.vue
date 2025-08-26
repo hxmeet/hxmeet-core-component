@@ -5,8 +5,8 @@
         <span v-if="bodyExtension && (isRef(bodyExtension) || typeof bodyExtension === 'string')">{{ bodyExtension }}</span>
         <component
             v-else-if="bodyExtension"
-            :is="(bodyExtension as ComponentDescriptor).component"
-            v-bind="(bodyExtension as ComponentDescriptor).props"
+            :is="(bodyExtension as HxComponentDescriptor).component"
+            v-bind="(bodyExtension as HxComponentDescriptor).props"
         />
 
       </div>
@@ -41,7 +41,7 @@ import UTooltip from "@nuxt/ui/components/Tooltip.vue";
 import UButton from "@nuxt/ui/components/Button.vue";
 import {useUIState} from "../../composable/conferenceState.ts";
 import HxPanel from "./HxPanel.vue";
-import {type ComponentDescriptor, useExtensions} from '../../composable/useExtensions.ts';
+import {type HxComponentDescriptor, useExtensions} from '../../composable/useExtensions.ts';
 const { sidebarResizing } = useUIState();
 
 const { get } = useExtensions();
