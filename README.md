@@ -20,6 +20,17 @@ Try it out at: [https://hxmeet.io](https://hxmeet.io)
 - Participant list
 - Media controls (mute, camera off)
 - Support keyboard shortcuts
+- Dark mode
+- Mobile friendly
+
+## 🛠️ Developer options
+
+- Themable (set your own color schema)
+- Embeddable in your app or website 
+- Customizable
+  - Hook into the component events
+  - Add extensions
+- Open-source (MIT license)
 
 ## 📦 Installation
 
