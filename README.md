@@ -3,32 +3,23 @@
 This project provides the core component for video conferencing systems. It is open-source, allowing the creation 
 of custom, tailored conferencing solutions. The conference component `<HxMeet>` is a browser-based Vue.js component.
 
----
-
 ## Live Demo
 
 Try it out at: [https://hxmeet.io](https://hxmeet.io)
 
----
-
-## 📸 Screenshot
+## Screenshot
 
 ![HxMeet Screenshot](https://hxmeet.io/changelog/roundtable_1.jpg)  
 
----
+## ✨ Conferencing Features
 
-## ✨ Features
-
-- End-to-End encrypted WebRTC video & audio
-- Self-hosted or SaaS option
-- Invite participants via link & PIN
-- Screen sharing and collaborative tools
-- Chat (public & private)
-- Moderator controls (mute, remove, spotlight, recording)
-
-For more details, see the [full feature list](../features.md).
-
----
+- Low-latency WebRTC video & audio
+- Screen sharing
+- Chat
+- Different layout options
+- Participant list
+- Media controls (mute, camera off)
+- Support keyboard shortcuts
 
 ## 📦 Installation
 
