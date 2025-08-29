@@ -1,33 +1,69 @@
-# hxmeet-core-component
+# HxMeet Core Component
 
-This template should help get you started developing with Vue 3 in Vite.
+This project provides the core component for video conferencing systems. It is open-source, allowing the creation 
+of custom, tailored conferencing solutions. The conference component `<HxMeet>` is a browser-based Vue.js component.
 
-## Recommended IDE Setup
+## Live Demo
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+👉 Try it out at: [https://hxmeet.io](https://hxmeet.io)
 
-## Type Support for `.vue` Imports in TS
+## Screenshot
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+![HxMeet Screenshot](https://hxmeet.io/changelog/roundtable_1.jpg)  
 
-## Customize configuration
+## ✨ Conferencing Features
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+- Low-latency WebRTC video & audio
+- Screen sharing
+- Chat
+- Different layout options
+- Participant list
+- Media controls (mute, camera off)
+- Support keyboard shortcuts
+- Dark mode
+- Mobile friendly
 
-## Project Setup
+## 🛠️ Developer options
 
-```sh
-npm install
+- Themable (set your own color schema)
+- Embeddable in your app or website 
+- Customizable
+  - Hook into the component events
+  - Add extensions
+- Add test participants
+- Open-source (MIT license)
+
+## Installation and first tests
+
+### Requirements
+- [Node.js](https://nodejs.org/) (v22 recommended)
+- [npm](https://www.npmjs.com/)
+- [LiveKit](https://livekit.io) account (later you can switch to an self-hosted livekit solution)
+
+### Simple test
+
+The project contains a simple test page. You can run it locally with:
+
+1. Checkout project and install dependencies: `npm install`
+2. Copy the `.env` file to `.env.local`
+3. Enter your LiveKit credentials there:
+
+```bash
+VITE_LIVEKIT_URL=<your-livekit-url>
+VITE_LIVEKIT_TOKEN=<your-token>
 ```
 
-### Compile and Hot-Reload for Development
+> **Note:**  The URL is the Livekit project URL and the token you can find in _Settings/API-Keys_ (create an API-Key and generate a token inside the three-dot menu)
 
-```sh
-npm run dev
-```
+4. Start the test page: `npm run dev`
+5. Open [http://localhost:5173](http://localhost:5173) in your browser
 
-### Type-Check, Compile and Minify for Production
+This test is limited to only one 'real' participant, because you have only one token, but you can add more test participants.
 
-```sh
-npm run build
-```
+### Advanced test (starter project )
+
+see [Starter-Project](https://github.com/hxmeet/hxmeet-core-starter)
+
+## License
+
+Licensed under the MIT License.
