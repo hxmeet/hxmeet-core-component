@@ -5,7 +5,7 @@ of custom, tailored conferencing solutions. The conference component `<HxMeet>` 
 
 ## Live Demo
 
-Try it out at: [https://hxmeet.io](https://hxmeet.io)
+👉 Try it out at: [https://hxmeet.io](https://hxmeet.io)
 
 ## Screenshot
 
@@ -30,96 +30,40 @@ Try it out at: [https://hxmeet.io](https://hxmeet.io)
 - Customizable
   - Hook into the component events
   - Add extensions
+- Add test participants
 - Open-source (MIT license)
 
-## 📦 Installation
+## Installation and first tests
 
 ### Requirements
 - [Node.js](https://nodejs.org/) (v22 recommended)
 - [npm](https://www.npmjs.com/)
+- [LiveKit](https://livekit.io) account (later you can switch to an self-hosted livekit solution)
 
-### Install from npm
-```bash
-npm i hxmeet-core-component
-```
+### Simple test
 
----
+The project contains a simple test page. You can run it locally with:
 
-## ▶️ Usage
-
-You can import and use the HxMeet Core Component in your Vue 3 project:
-
-```vue
-<script setup>
-import { HxMeet } from 'hxmeet-core-component'
-</script>
-
-<template>
-  <HxMeet room="my-conference-room" pin="123456" />
-</template>
-```
-
----
-
-## ⚙️ Configuration
-
-A running [LiveKit](https://livekit.io) instance is required (Cloud or self-hosted).  
-From this instance you need the **URL** and a **Token**.
-
-1. Copy the `.env` file to `.env.local`
-2. Enter your LiveKit credentials there:
+1. Checkout project and install dependencies: `npm install`
+2. Copy the `.env` file to `.env.local`
+3. Enter your LiveKit credentials there:
 
 ```bash
 VITE_LIVEKIT_URL=<your-livekit-url>
 VITE_LIVEKIT_TOKEN=<your-token>
 ```
 
----
+> **Note:**  The URL is the Livekit project URL and the token you can find in _Settings/API-Keys_ (create an API-Key and generate a token inside the three-dot menu)
 
-## 🐳 Self-Hosting with Docker
+4. Start the test page: `npm run dev`
+5. Open [http://localhost:3000](http://localhost:3000) in your browser`
 
-You can run the component standalone with Docker:
+This test is limited to only one 'real' participant, because you have only one token, but you can add more test participants.
 
-```bash
-docker compose up -d
-```
+### Advanced test (starter project )
 
-This will start a local HxMeet instance connected to your own LiveKit server.  
-See the [technical documentation](../technische-losung.md) for details.
+see [Starter-Project](https://github.com/hxmeet/hxmeet-core-starter)
 
----
-
-## 📖 Development Setup
-
-Clone the repository and install dependencies:
-
-```bash
-git clone https://github.com/hxmeet/hxmeet-core-component.git
-cd hxmeet-core-component
-npm install
-```
-
-Start the dev server:
-
-```bash
-npm run dev
-```
-
-Build for production:
-
-```bash
-npm run build
-```
-
----
-
-## 📜 License
+## License
 
 Licensed under the MIT License.
-
----
-
-## 🙌 Contributing
-
-We welcome contributions!  
-Please check out our [development roadmap](../schritte-entwicklung.md) and open issues.
