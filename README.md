@@ -53,7 +53,8 @@ VITE_LIVEKIT_URL=<your-livekit-url>
 VITE_LIVEKIT_TOKEN=<your-token>
 ```
 
-> **Note:**  The URL is the Livekit project URL and the token you can find in _Settings/API-Keys_ (create an API-Key and generate a token inside the three-dot menu)
+> [!NOTE] 
+> The URL is the Livekit project URL and the token you can find in _Settings/API-Keys_ (create an API-Key and generate a token inside the three-dot menu)
 
 4. Start the test page: `npm run dev`
 5. Open [http://localhost:5173](http://localhost:5173) in your browser
