@@ -54,19 +54,21 @@ import {
   useToggleCamera, useToggleLayout, useToggleMicrophone
 } from "../composable/conferenceActions.ts";
 import {useClickSidebarButton, useModal} from "../composable/ui.ts";
-import {useThrottleFn} from "@vueuse/core";
+import {useColorMode, useThrottleFn} from "@vueuse/core";
 import {defineShortcuts2 as defineShortcuts} from "../composable/nuxtui/defineShortcuts2.ts";
 import {type HxComponentDescriptor, useExtensions} from "../composable/useExtensions.ts";
 import {type HxHandler, type HxEvent, useEvents} from "../composable/useEvents.ts";
 
 const { hideSidebar } = useUIState();
 const {closeAllModals} = useModal()
+const colorMode = useColorMode()
 
 export interface HxMeetingProps {
   livekitUrl: string,
   livekitToken: string,
   extensions?: Record<string, string | Ref | HxComponentDescriptor>;
   events?: Partial<Record<HxEvent, HxHandler>>;
+  colorMode?: 'light' | 'dark' | 'auto';
 }
 const props = defineProps<HxMeetingProps>()
 
@@ -87,6 +89,12 @@ watch(() => props.events, (events) => {
   if (!events) return;
   for (const [name, item] of Object.entries(events)) on(name as HxEvent, item);
 }, { immediate: true, deep: true });
+
+watch(() => props.colorMode, () => {
+  if (props.colorMode !== undefined) {
+    colorMode.value = props.colorMode
+  }
+}, { immediate: true });
 
 onBeforeMount(() => {
   provideLivekitConfig(
